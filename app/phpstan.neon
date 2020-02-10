@@ -4,4 +4,4 @@ parameters:
     - src
   ignoreErrors:
     # Tableのマジックメソッドに対応
-    - '#Call to an undefined method (.*?)Table::findBy#'
+    # - '#Call to an undefined method (.*?)Table::findBy#'
