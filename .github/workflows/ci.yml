@@ -19,4 +19,20 @@ jobs:
       - name: Setup MySQL
         run: mysql -u root -proot -e 'CREATE DATABASE test;'
 
-      - run: ls -la
+      - name: Composer install
+        working-directory: ./app
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      - name: Run PHPUnit
+        env:
+          DATABASE_TEST_URL: mysql://root:root@localhost/test
+        working-directory: ./app
+        run: vendor/bin/phpunit
+
+      - name: Run PHP_CodeSniffer
+        working-directory: ./app
+        run: vendor/bin/phpcs -p
+
+      - name: Run PHPStan
+        working-directory: ./app
+        run: vendor/bin/phpstan analyse
