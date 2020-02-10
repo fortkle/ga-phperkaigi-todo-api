@@ -6,5 +6,17 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: 7.4
+          extensions: intl
+          coverage: none
+
+      - name: Setup MySQL
+        run: mysql -u root -proot -e 'CREATE DATABASE test;'
+
       - run: ls -la
-      - run: pwd
