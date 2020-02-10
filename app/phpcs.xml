@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="App">
+    <description>App Coding Standard</description>
+
+    <file>./src/</file>
+    <file>./tests/</file>
+
+    <!-- CakePHP coding standard -->
+    <rule ref="./vendor/cakephp/cakephp-codesniffer/CakePHP">
+        <!-- アノテーションでの単純名を許容する -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation.NonFullyQualifiedClassName" />
+        <!-- "CakePHP.PHP.CommaAfterArrayItem.MissingTrailingComma" と同じルールなので抑制する -->
+        <exclude name="SlevomatCodingStandard.Arrays.TrailingArrayComma.MissingTrailingComma" />
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" type="boolean" value="true"/>
+        </properties>
+    </rule>
+</ruleset>
