@@ -79,7 +79,8 @@ class TodosController extends AppController
      * @return void
      * @throws RecordNotFoundException When record not found.
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $todo = $this->Todos->get($id);
         $this->Todos->deleteOrFail($todo);
 
